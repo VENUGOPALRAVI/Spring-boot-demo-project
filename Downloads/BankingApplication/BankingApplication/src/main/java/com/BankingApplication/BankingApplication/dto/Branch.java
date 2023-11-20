@@ -1,27 +1,31 @@
 package com.BankingApplication.BankingApplication.dto;
 
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Entity
+@Getter
 @Setter
-public class Bank
+public class Branch 
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String name;
-	private long contact;
+	private String IFSC;
+	@OneToOne
+	private Manager manager;
+	@ManyToOne
+	private Bank bank;
 	@OneToMany
-	private List<Branch>branches;
-	
+	private User user;
+	@OneToOne
+	private Address address;
 
 }

@@ -1,5 +1,7 @@
 package com.BankingApplication.BankingApplication.dto;
 
+import org.springframework.stereotype.Component;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,6 +13,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Component
 public class Manager 
 {
 	@Id

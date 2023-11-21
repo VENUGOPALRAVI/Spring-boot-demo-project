@@ -1,5 +1,9 @@
 package com.BankingApplication.BankingApplication.dto;
 
+import java.util.List;
+
+import org.springframework.stereotype.Component;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,6 +17,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Component
 public class Branch 
 {
 	@Id
@@ -24,7 +29,7 @@ public class Branch
 	@ManyToOne
 	private Bank bank;
 	@OneToMany
-	private User user;
+	private  List<User>user;
 	@OneToOne
 	private Address address;
 

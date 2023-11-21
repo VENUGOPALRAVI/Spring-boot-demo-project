@@ -48,10 +48,7 @@ public class Bankdao
 		Bank exbank = findBank(id);
 		if(exbank!=null)
 		{
-			if(b.getId()==0)
-			{
-				b.setId(exbank.getId());
-			}
+			
 			if(b.getName()==null)
 			{
 				b.setName(exbank.getName());
@@ -64,6 +61,7 @@ public class Bankdao
 			{
 				b.setBranches(exbank.getBranches());
 			}
+			b.setId(id);
 			return repo.save(b);
 		}
 		return null;

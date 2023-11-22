@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,6 +20,7 @@ import lombok.Setter;
 @Entity
 @Setter
 @Component
+
 public class Bank
 {
 	@Id
@@ -24,7 +28,9 @@ public class Bank
 	private int id;
 	private String name;
 	private long contact;
-	@OneToMany(cascade = CascadeType.ALL)
+	
+	@OneToMany(mappedBy="bank",cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Branch>branches;
 	
 

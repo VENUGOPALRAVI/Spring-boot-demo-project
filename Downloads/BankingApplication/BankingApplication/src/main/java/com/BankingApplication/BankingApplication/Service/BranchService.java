@@ -23,10 +23,14 @@ public class BranchService
 	public ResponseEntity<ResponseStructure<Branch>> saveBranch(Branch b,int bankId)
 	{
 		ResponseStructure<Branch> structure = new ResponseStructure<Branch>();
-		Bank exbank= bankdao.findBank(bankId);
-		b.setBank(exbank);
 		
-		structure.setData(dao.saveBranch(b));
+		Bank exbank= bankdao.findBank(bankId);
+		Branch savedBranch=dao.saveBranch(b);
+		exbank.getBranches().add(savedBranch);
+		b.setBank(exbank);
+		dao.updateBranch(savedBranch, savedBranch.getId());
+		
+		structure.setData(savedBranch);
 		structure.setMessage("branch is saved");
 		structure.setStatus(HttpStatus.CREATED.value());
 		

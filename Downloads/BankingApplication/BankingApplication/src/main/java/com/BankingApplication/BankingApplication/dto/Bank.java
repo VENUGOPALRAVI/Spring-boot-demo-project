@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,7 +24,7 @@ public class Bank
 	private int id;
 	private String name;
 	private long contact;
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Branch>branches;
 	
 

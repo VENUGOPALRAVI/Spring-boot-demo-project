@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.BankingApplication.BankingApplication.Config.ResponseStructure;
 import com.BankingApplication.BankingApplication.dao.Bankdao;
 import com.BankingApplication.BankingApplication.dto.Bank;
+import com.BankingApplication.BankingApplication.dto.Branch;
 
 @Service
 public class BankService 
@@ -35,10 +36,11 @@ public class BankService
 		
 		
 	}
-	public ResponseEntity<ResponseStructure<Bank>> updateBank(Bank b,int id)
+	
+	public ResponseEntity<ResponseStructure<Bank>> updateBank(Bank b,int bankId)
 	{
 		ResponseStructure<Bank> structure = new ResponseStructure<Bank>();
-		structure.setData( dao.updateBank(b, id));
+		structure.setData( dao.updateBank(b, bankId));
 		structure.setMessage("bank data updated");
 		structure.setStatus(HttpStatus.OK.value());
 		return new ResponseEntity<ResponseStructure<Bank>>(structure,HttpStatus.OK);

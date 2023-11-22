@@ -2,6 +2,7 @@ package com.BankingApplication.BankingApplication.dto;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,9 +20,9 @@ public class Manager
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Branch branch;
 	private String name;
 	private String password;
